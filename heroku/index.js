@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
-app.get(['https://eglo.herokuapp.com/facebook'], function(req, res) {   
+app.get(['/facebook'], function(req, res) {   
   if (
     req.param('hub.mode') == 'subscribe' &&
     req.param('hub.verify_token') == token
@@ -36,7 +36,7 @@ app.get(['https://eglo.herokuapp.com/facebook'], function(req, res) {
   }
 });
 
-app.post('https://eglo.herokuapp.com/facebook', function(req, res) {
+app.post('/facebook', function(req, res) {
   console.log('Facebook request body:', req.body);
 
   if (!req.isXHubValid()) {
